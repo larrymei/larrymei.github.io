@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -121,7 +121,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -215,6 +215,292 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/金融时间序列分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/26/金融时间序列分析/" itemprop="url">金融时间序列分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-26T23:16:00+08:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-时间序列的特征"><a href="#1-时间序列的特征" class="headerlink" title="1. 时间序列的特征"></a>1. 时间序列的特征</h2><p>一个时间序列可能存在的特征包括：</p>
+<blockquote>
+<ul>
+<li><strong>趋势：</strong>趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。</li>
+<li><strong>季节变化：</strong>许多时间序列中包含季节变化。在金融领域，我们经常看到商品价格的季节性变化，特别是那些与生长季节或温度变化有关的商品，比如天然气。</li>
+<li><strong>序列相关性：金融时间序列的一个最重要特征是序列相关性（serial correlation），又称为自相关性（autocorrelation）。</strong>以投资品的收益率序列为例，我们会经常观察到一段时间内的收益率之间存在正相关或者负相关。</li>
+<li><strong>随机噪声：</strong>它是时间序列中除去趋势、季节变化和自相关性之后的剩余随机扰动。由于时间序列存在不确定性，随机噪声总是夹杂在时间序列中，致使时间序列表现出某种震荡式的无规律运动。</li>
+</ul>
+</blockquote>
+<p>==<strong>金融时间序列分析的核心就是挖掘该时间序列中的自相关性。</strong>==</p>
+<h2 id="2-协方差和相关系数"><a href="#2-协方差和相关系数" class="headerlink" title="2. 协方差和相关系数"></a>2. 协方差和相关系数</h2><ul>
+<li><strong>总体协方差</strong></li>
+</ul>
+<p>$$<br>\mathrm{Cov}(X,Y)=\mathrm{E}[(X-\mu_{X})(Y-\mu_{Y})]<br>$$</p>
+<ul>
+<li><p><strong>样本协方差</strong><br>$$<br>\hat{\mathrm{Cov}}(X,Y)=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})<br>$$</p>
+</li>
+<li><p><strong>总体相关系数</strong></p>
+</li>
+</ul>
+<p>$$<br>\rho(X,Y)=\frac{\mathrm{E}[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}=\frac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}<br>$$</p>
+<ul>
+<li><strong>样本相关系数</strong></li>
+</ul>
+<p>$$<br>\hat{\rho}(X,Y)=\frac{\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_i-\bar{X})^2(Y_i-\bar{Y})^2}}<br>$$</p>
+<h2 id="3-时间序列的平稳性"><a href="#3-时间序列的平稳性" class="headerlink" title="3. 时间序列的平稳性"></a>3. 时间序列的平稳性</h2><ul>
+<li><strong>严平稳(strictly stationary)</strong></li>
+</ul>
+<blockquote>
+<p>时间序列中任意给定长度的两段子序列都满足相同的联合分布。</p>
+</blockquote>
+<p>这在实际中几乎不可能满足。因此，实际中我们更关注于弱平稳的时间序列。</p>
+<ul>
+<li><strong>弱平稳(weekly stationary)</strong></li>
+</ul>
+<blockquote>
+<p>如果一个时间序列 ${r_t}​$ 满足以下两个条件，则它是弱平稳的： </p>
+<ol>
+<li>对于所有的时刻 $t$，有 $\mathrm{E}[r_t]=\mu$，其中 $\mu$ 是一个常数。</li>
+<li>对于所有的时刻 $t$ 和任意的间隔 $k$，$r_t$ 和 $r_{t-k}$ 的协方差 $\sigma(r_t, r_{t-k}) = \gamma_k$，其中 $\gamma_k$ 与时间 $t$ 无关，它仅仅依赖于间隔 $k$。特别的，当 $k=0$ 时，这个特性意味着 $\sigma(r_t,r_t)$ 即 $r_t$ 的方差不随时间变化，等于一个与时间 $t$ 无关的常数 $\gamma_0$，这称为方差平稳性(stationary in variance)。</li>
+</ol>
+</blockquote>
+<p>==<strong>弱平稳对于时间序列分析特别重要!</strong>==</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/The test of markdown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/26/The test of markdown/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-26T20:14:56+08:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="The-test-of-markdown"><a href="#The-test-of-markdown" class="headerlink" title="The test of markdown"></a>The test of markdown</h1><p>Let’s go!</p>
+<h2 id="1-Formula"><a href="#1-Formula" class="headerlink" title="1. Formula"></a>1. Formula</h2><p>This is to say $ E=mc^2$, which is super ==important== for people.<br>$$<br>E=x^2+y^2 + 32<br>$$<br>Now I try to use this markdown file editor to write.</p>
+<h3 id="1-1-Ticks-of-formula"><a href="#1-1-Ticks-of-formula" class="headerlink" title="1.1 Ticks of formula"></a>1.1 Ticks of formula</h3><p>I have a remarkable formula for you, i.e. $ \pi=3.14 $ .</p>
+<p>Ha Ha, do you see that?</p>
+<p>$$<br>a_{1}^{2}+\frac{2}{3}<br>$$</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -632,7 +918,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -849,6 +1135,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
