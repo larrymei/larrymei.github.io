@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1. 时间序列的特征一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品价格的季节性">
+<meta name="description" content="1. 时间序列的特征 一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品">
 <meta property="og:type" content="article">
 <meta property="og:title" content="金融时间序列分析">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/金融时间序列分析/index.html">
 <meta property="og:site_name" content="一乘小车">
-<meta property="og:description" content="1. 时间序列的特征一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品价格的季节性">
+<meta property="og:description" content="1. 时间序列的特征 一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-20T15:15:47.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="金融时间序列分析">
-<meta name="twitter:description" content="1. 时间序列的特征一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品价格的季节性">
+<meta name="twitter:description" content="1. 时间序列的特征 一个时间序列可能存在的特征包括：   趋势：趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。 季节变化：许多时间序列中包含季节变化。在金融领域，我们经常看到商品">
 
 
 
@@ -352,7 +352,8 @@
       
 
       
-        <h2 id="1-时间序列的特征"><a href="#1-时间序列的特征" class="headerlink" title="1. 时间序列的特征"></a>1. 时间序列的特征</h2><p>一个时间序列可能存在的特征包括：</p>
+        <h2 id="时间序列的特征">1. 时间序列的特征</h2>
+<p>一个时间序列可能存在的特征包括：</p>
 <blockquote>
 <ul>
 <li><strong>趋势：</strong>趋势是时间序列在某一方向上持续运动（比如牛市时股市每天都在上涨，股票收益率持续为正；熊市时股市每天都在下跌，股票收益率持续为负）。趋势经常出现在金融时间序列中，特别是大宗商品价格；许多商品交易顾问（CTA）基金在他们的交易算法中都使用了复杂的趋势识别模型。</li>
@@ -362,22 +363,30 @@
 </ul>
 </blockquote>
 <p>==<strong>金融时间序列分析的核心就是挖掘该时间序列中的自相关性。</strong>==</p>
-<h2 id="2-协方差和相关系数"><a href="#2-协方差和相关系数" class="headerlink" title="2. 协方差和相关系数"></a>2. 协方差和相关系数</h2><ul>
+<h2 id="协方差和相关系数">2. 协方差和相关系数</h2>
+<ul>
 <li><strong>总体协方差</strong></li>
 </ul>
-<p>$$<br>\mathrm{Cov}(X,Y)=\mathrm{E}[(X-\mu_{X})(Y-\mu_{Y})]<br>$$</p>
+<p><span class="math display">\[
+\mathrm{Cov}(X,Y)=\mathrm{E}[(X-\mu_{X})(Y-\mu_{Y})]
+\]</span></p>
 <ul>
-<li><p><strong>样本协方差</strong><br>$$<br>\hat{\mathrm{Cov}}(X,Y)=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})<br>$$</p>
-</li>
-<li><p><strong>总体相关系数</strong></p>
-</li>
+<li><p><strong>样本协方差</strong> <span class="math display">\[
+\hat{\mathrm{Cov}}(X,Y)=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})
+\]</span></p></li>
+<li><p><strong>总体相关系数</strong></p></li>
 </ul>
-<p>$$<br>\rho(X,Y)=\frac{\mathrm{E}[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}=\frac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}<br>$$</p>
+<p><span class="math display">\[
+\rho(X,Y)=\frac{\mathrm{E}[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}=\frac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}
+\]</span></p>
 <ul>
 <li><strong>样本相关系数</strong></li>
 </ul>
-<p>$$<br>\hat{\rho}(X,Y)=\frac{\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_i-\bar{X})^2(Y_i-\bar{Y})^2}}<br>$$</p>
-<h2 id="3-时间序列的平稳性"><a href="#3-时间序列的平稳性" class="headerlink" title="3. 时间序列的平稳性"></a>3. 时间序列的平稳性</h2><ul>
+<p><span class="math display">\[
+\hat{\rho}(X,Y)=\frac{\sum_{i=1}^{n}(X_i-\bar{X})(Y_i-\bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_i-\bar{X})^2(Y_i-\bar{Y})^2}}
+\]</span></p>
+<h2 id="时间序列的平稳性">3. 时间序列的平稳性</h2>
+<ul>
 <li><strong>严平稳(strictly stationary)</strong></li>
 </ul>
 <blockquote>
@@ -388,11 +397,7 @@
 <li><strong>弱平稳(weekly stationary)</strong></li>
 </ul>
 <blockquote>
-<p>如果一个时间序列 ${r_t}​$ 满足以下两个条件，则它是弱平稳的： </p>
-<ol>
-<li>对于所有的时刻 $t$，有 $\mathrm{E}[r_t]=\mu$，其中 $\mu$ 是一个常数。</li>
-<li>对于所有的时刻 $t$ 和任意的间隔 $k$，$r_t$ 和 $r_{t-k}$ 的协方差 $\sigma(r_t, r_{t-k}) = \gamma_k$，其中 $\gamma_k$ 与时间 $t$ 无关，它仅仅依赖于间隔 $k$。特别的，当 $k=0$ 时，这个特性意味着 $\sigma(r_t,r_t)$ 即 $r_t$ 的方差不随时间变化，等于一个与时间 $t$ 无关的常数 $\gamma_0$，这称为方差平稳性(stationary in variance)。</li>
-</ol>
+<p>如果一个时间序列 <span class="math inline">\(\{r_t\}​\)</span> 满足以下两个条件，则它是弱平稳的： 1. 对于所有的时刻 <span class="math inline">\(t\)</span>，有 <span class="math inline">\(\mathrm{E}[r_t]=\mu\)</span>，其中 <span class="math inline">\(\mu\)</span> 是一个常数。 2. 对于所有的时刻 <span class="math inline">\(t\)</span> 和任意的间隔 <span class="math inline">\(k\)</span>，<span class="math inline">\(r_t\)</span> 和 <span class="math inline">\(r_{t-k}\)</span> 的协方差 <span class="math inline">\(\sigma(r_t, r_{t-k}) = \gamma_k\)</span>，其中 <span class="math inline">\(\gamma_k\)</span> 与时间 <span class="math inline">\(t\)</span> 无关，它仅仅依赖于间隔 <span class="math inline">\(k\)</span>。特别的，当 <span class="math inline">\(k=0\)</span> 时，这个特性意味着 <span class="math inline">\(\sigma(r_t,r_t)\)</span> 即 <span class="math inline">\(r_t\)</span> 的方差不随时间变化，等于一个与时间 <span class="math inline">\(t\)</span> 无关的常数 <span class="math inline">\(\gamma_0\)</span>，这称为方差平稳性(stationary in variance)。</p>
 </blockquote>
 <p>==<strong>弱平稳对于时间序列分析特别重要!</strong>==</p>
 
@@ -509,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -556,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-时间序列的特征"><span class="nav-number">1.</span> <span class="nav-text">1. 时间序列的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-协方差和相关系数"><span class="nav-number">2.</span> <span class="nav-text">2. 协方差和相关系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-时间序列的平稳性"><span class="nav-number">3.</span> <span class="nav-text">3. 时间序列的平稳性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的特征"><span class="nav-number">1.</span> <span class="nav-text">1. 时间序列的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协方差和相关系数"><span class="nav-number">2.</span> <span class="nav-text">2. 协方差和相关系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的平稳性"><span class="nav-number">3.</span> <span class="nav-text">3. 时间序列的平稳性</span></a></li></ol></div>
             
 
           </div>
