@@ -79,13 +79,19 @@
 
 
 
+<meta name="description" content="Importance Sampling When \(p(z)\) is a complicate distribution and difficult to sample, we can alternatively sample from an much simpler distribution \(q(z)\) to approximate this distribution.  Con">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一乘小车">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/Importance sampling.html">
 <meta property="og:site_name" content="一乘小车">
+<meta property="og:description" content="Importance Sampling When \(p(z)\) is a complicate distribution and difficult to sample, we can alternatively sample from an much simpler distribution \(q(z)\) to approximate this distribution.  Con">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1258712773.cos.ap-guangzhou.myqcloud.com/img/20190511000705.png">
+<meta property="og:updated_time" content="2019-05-13T05:25:45.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一乘小车">
+<meta name="twitter:description" content="Importance Sampling When \(p(z)\) is a complicate distribution and difficult to sample, we can alternatively sample from an much simpler distribution \(q(z)\) to approximate this distribution.  Con">
+<meta name="twitter:image" content="https://blog-1258712773.cos.ap-guangzhou.myqcloud.com/img/20190511000705.png">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/Importance sampling.html">
 
 
 
 
 
-  <title>归档 | 一乘小车</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> | 一乘小车</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +146,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,212 +252,61 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 5 篇日志。 继续努力。
-      </span>
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
 
       
+      
+      
+      <div class="post-body">
+        
+        
+          <h1 id="importance-sampling">Importance Sampling</h1>
+<p>When <span class="math inline">\(p(z)\)</span> is a complicate distribution and difficult to sample, we can alternatively sample from an much simpler distribution <span class="math inline">\(q(z)\)</span> to approximate this distribution.</p>
+<p><img src="https://blog-1258712773.cos.ap-guangzhou.myqcloud.com/img/20190511000705.png"></p>
+<p>Consider the case to calculate the expectation of <span class="math inline">\(f(z)\)</span> given the distribution <span class="math inline">\(p(z)\)</span>, we can express it in the form of a finite sum over samples <span class="math inline">\(\{z^{(l)}\}\)</span> drawn from <span class="math inline">\(q(z)\)</span> <span class="math display">\[
+\begin{align}
+\mathbb{E}[f] &amp;= \int{f(z)p(z)dz} \\
+&amp;= \int{f(z)\frac{p(z)}{q(z)}q(z)dz} \\
+&amp;\approx \frac{1}{L}\sum^L_{l=1}\frac{p(z^{(l)})}{q(z^{(l)})}f(z^{(l)})
+\end{align}
+\]</span> The quantities <span class="math inline">\(r_l=p(z^{(l)})/q(z^{(l)})\)</span> are known as importance weights, and they correct the bias introduced by sampling from the wrong distribution.</p>
+<p>It will be often the case that <span class="math inline">\(p(z)\)</span> will only be evaluated up to a normalization constant, <span class="math inline">\(p(z)=\tilde{p}(z)/Z_p\)</span> where <span class="math inline">\(Z_p\)</span> is unknown. <span class="math display">\[
+\begin{align}
+\mathbb{E}[f] &amp;= \frac{Z_q}{Z_p}\int{f(z)\frac{\tilde{p}(z)}{\tilde{q}(z)}q(z)dz} \\
+&amp;\approx \frac{Z_q}{Z_p}\frac{1}{L}\sum^L_{l=1}\tilde{r_l}f(z^{(l)})
+\end{align}
+\]</span> where <span class="math inline">\(\tilde{r_l}=\tilde{p}(z^{(l)})/\tilde{q}(z^{(l)})\)</span>. The ratio <span class="math inline">\(Z_q/Z_p\)</span> can also be evaluted by <span class="math display">\[
+\begin{align}
+\frac{Z_p}{Z_q}&amp;=\frac{1}{Z_q}\int{\tilde{p}(z)}dz=\int{\frac{\tilde{p}(z)}{\tilde{q}(z)}q(z)dz} \\
+&amp;\approx \frac{1}{L}\sum^L_{l=1}\tilde{r_l}
+\end{align}
+\]</span> Thus <span class="math display">\[
+\mathbb{E}[f]\approx\sum_{l=1}^Lw_lf(z^{(l)})
+\]</span> where we have defined <span class="math display">\[
+w_l=\frac{\tilde{r_l}}{\sum_k\tilde{r_k}}=\frac{\tilde{p}(z^{(l)})/\tilde{q}(z^{(l)})}{\sum_k{\tilde{p}(z^{(k)})/\tilde{q}(z^{(k)})}}=\frac{\tilde{p}(z^{(l)})/q(z^{(l)})}{\sum_k{\tilde{p}(z^{(k)})/q(z^{(k)})}}
+\]</span></p>
 
         
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/13/Particle-Filter/" itemprop="url">
-              
-                <span itemprop="name">Particle Filter</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T22:25:26+08:00" content="2019-05-13">
-          05-13
-        </time>
       </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/13/Importance-sampling/" itemprop="url">
-              
-                <span itemprop="name">Importance sampling</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T22:24:16+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/20/Logistic-Regression/" itemprop="url">
-              
-                <span itemprop="name">Logistic Regression</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-20T23:55:03+08:00" content="2019-03-20">
-          03-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/Deep-learning-notes/" itemprop="url">
-              
-                <span itemprop="name">Deep learning notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T10:56:13+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/26/金融时间序列分析/" itemprop="url">
-              
-                <span itemprop="name">金融时间序列分析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-26T23:16:00+08:00" content="2019-02-26">
-          02-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -459,6 +314,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -479,8 +341,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,6 +405,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#importance-sampling"><span class="nav-number">1.</span> <span class="nav-text">Importance Sampling</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -669,6 +556,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
